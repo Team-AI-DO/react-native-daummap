@@ -32,7 +32,7 @@ public class DaumMapManager extends SimpleViewManager<View> implements MapView.M
 	public static final String TAG = "DaumMap";
 	private final ReactApplicationContext appContext;
 	private RNMapView rnMapView;
-	private boolean initialRegionSet 	= false;
+//	private boolean initialRegionSet 	= false;
 	private boolean isTracking 			= false;
 	private boolean isCompass 			= false;
 	private int 	tagIDX 				= 0;
@@ -71,9 +71,19 @@ public class DaumMapManager extends SimpleViewManager<View> implements MapView.M
 		double longitude	= initialRegion.hasKey("longitude") ? initialRegion.getDouble("longitude") : 128.392905;
 		int    zoomLevel 	= initialRegion.hasKey("zoomLevel") ? initialRegion.getInt("zoomLevel") : 2;
 
-		if (!initialRegionSet) {
+//		if (!initialRegionSet) {
 			mMapView.setMapCenterPointAndZoomLevel(MapPoint.mapPointWithGeoCoord(latitude, longitude), zoomLevel, true);
-			initialRegionSet = true;
+//			initialRegionSet = true;
+//		}
+	}
+
+
+	@ReactProp(name = "region")
+	public void setRegion(MapView mMapView, ReadableMap region) {
+		if(region.hasKey("latitude") && region.hasKey("longitude")) {
+			double latitude = region.getDouble("latitude");
+			double longitude = region.getDouble("longitude");
+			mMapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(latitude, longitude), true);
 		}
 	}
 

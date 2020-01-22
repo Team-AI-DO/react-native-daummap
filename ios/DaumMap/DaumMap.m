@@ -132,10 +132,10 @@
 
 - (void) setRegion:(NSDictionary *)region {
     if ([region valueForKey:@"latitude"] != [NSNull null] && [region valueForKey:@"longitude"] != [NSNull null]) {
-        float latdouble = [[region valueForKey:@"latitude"] floatValue];
-        float londouble = [[region valueForKey:@"longitude"] floatValue];
+        _latdouble = [[region valueForKey:@"latitude"] floatValue];
+        _londouble = [[region valueForKey:@"longitude"] floatValue];
 
-        [_mapView setMapCenterPoint:[MTMapPoint mapPointWithGeoCoord:MTMapPointGeoMake(latdouble, londouble)] animated:YES];
+        [_mapView setMapCenterPoint:[MTMapPoint mapPointWithGeoCoord:MTMapPointGeoMake(_latdouble, _londouble)] animated:YES];
     }
 }
 
