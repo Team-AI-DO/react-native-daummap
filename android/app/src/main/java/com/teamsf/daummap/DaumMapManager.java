@@ -182,6 +182,23 @@ public class DaumMapManager extends SimpleViewManager<View> implements MapView.M
 		}
 	}
 
+	@ReactProp(name = "tracking")
+	public void setTracking(MapView mMapView, ReadableMap trackingInfo) {
+		if (trackingInfo.hasKey("image")) {
+			String image = trackingInfo.getString("image");
+			int x = 0;
+			int y = 0;
+			if(trackingInfo.hasKey("offset")) {
+				ReadableMap offset = trackingInfo.getMap("offset");
+				x = offset.getInt("x");
+				y = offset.getInt("y");
+			}
+
+			int resID = appContext.getResources().getIdentifier(image, "drawable", appContext.getApplicationContext().getPackageName());
+			mMapView.setCustomCurrentLocationMarkerTrackingImage(resID, new MapPOIItem.ImageOffset(x,y));
+		}
+	}
+
 	@ReactProp(name = "isCurrentMarker")
 	public void setIsCurrentMarker(MapView mMapView, boolean tCurrentMarker) {
 		mMapView.setShowCurrentLocationMarker(tCurrentMarker);

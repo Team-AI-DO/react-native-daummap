@@ -3,6 +3,7 @@
 #import <DaumMap/MTMapView.h>
 #import <DaumMap/MTMapCircle.h>
 #import <DaumMap/MTMapPolyline.h>
+#import <DaumMap/MTMapLocationMarkerItem.h>
 
 // import RCTEventDispatcher
 #if __has_include(<React/RCTEventDispatcher.h>)
@@ -136,6 +137,25 @@
         _londouble = [[region valueForKey:@"longitude"] floatValue];
 
         [_mapView setMapCenterPoint:[MTMapPoint mapPointWithGeoCoord:MTMapPointGeoMake(_latdouble, _londouble)] animated:YES];
+    }
+}
+
+- (void) setTracking: (NSDictionary *)trackingInfo {
+    if ([trackingInfo valueForKey:@"image"] != [NSNull null] ) {
+        NSString* imageName = [trackingInfo valueForKey:@"image"];
+        
+        int x = 0;
+        int y = 0;
+        if( [trackingInfo valueForKey:@"offset"] != [NSNull null] ) {
+            NSDictionary* offset = [trackingInfo valueForKey:@"offset"];
+            x = [[offset valueForKey:@"x"] intValue];
+            y = [[offset valueForKey:@"y"] intValue];
+        }
+        MTMapLocationMarkerItem *makerItem = [MTMapLocationMarkerItem mapLocationMarkerItem];
+        makerItem.customTrackingImageName = imageName;
+        makerItem.customTrackingImageAnchorPointOffset = MTMapImageOffsetMake(x, y);
+        
+        [_mapView updateCurrentLocationMarker:makerItem];
     }
 }
 
