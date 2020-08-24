@@ -177,10 +177,10 @@ public class DaumMapManager extends SimpleViewManager<View> implements MapView.M
 		}
 		marker.setDraggable(draggable);
 
-		mMapView.addPOIItem(marker);
 		if(currentLocationMarker != null) {
 			mMapView.removePOIItem(currentLocationMarker);
 		}
+		mMapView.addPOIItem(marker);
 		currentLocationMarker = marker;
 	}
 
