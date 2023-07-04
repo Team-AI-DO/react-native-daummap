@@ -2,6 +2,16 @@
 
 [![NPM](https://nodei.co/npm/react-native-daummap.png)](https://nodei.co/npm/react-native-daummap/)
 
+# 설치 명령
+1. 설치
+  npm install @sbna-2online/react-native-daummap --force
+2. link
+  react-native link @sbna-2online/react-native-daummap
+3. sdk 추가
+  project에 DaumMap.embeddedframework 폴더 통째로 추가
+  project > general > "Frameworks, Libraries, and Embedded Content에 DaumMap.framework 추가
+
+
 # Content
 - [Installation](#installation)
 - [Usage](#usage)
