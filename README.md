@@ -10,6 +10,8 @@
 3. sdk 추가
   project에 DaumMap.embeddedframework 폴더 통째로 추가
   project > general > "Frameworks, Libraries, and Embedded Content에 DaumMap.framework 추가
+4. pod install 수행
+   (ios 폴더로 이동 후, m1 기준) arch -x86_64 pod install
 
 
 # Content
