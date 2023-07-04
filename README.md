@@ -2,7 +2,7 @@
 
 [![NPM](https://nodei.co/npm/react-native-daummap.png)](https://nodei.co/npm/react-native-daummap/)
 
-# 설치 명령
+# 설치 방법
 1. 설치
   npm install @sbna-2online/react-native-daummap --force
 2. link
